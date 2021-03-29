@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"me.johanneslosch.javalogger","c":"Logger","l":"error(String)","u":"error(java.lang.String)"},{"p":"me.johanneslosch.javalogger","c":"Logger","l":"Logger()","u":"%3Cinit%3E()"},{"p":"me.johanneslosch.javalogger","c":"Logger","l":"msg(String)","u":"msg(java.lang.String)"}];updateSearchResults();
