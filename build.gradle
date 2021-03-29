@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'maven'
+    id("maven-publish")
+}
+
+group 'me.johanneslosch'
+version '1.0'
+
+java {
+    disableAutoTargetJvm()
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/johanneslosch/")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GHUSERNAME")
+            password = project.findProperty("gpr.key") ?: System.getenv("GHTOKEN")
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    implementation 'me.johanneslosch:java-file-handler:1.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/johanneslosch/java-logger")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GHUSERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("GHTOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
