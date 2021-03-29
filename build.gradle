@@ -7,15 +7,11 @@ plugins {
 group 'me.johanneslosch'
 version '1.0'
 
-java {
-    disableAutoTargetJvm()
-}
-
 repositories {
     mavenCentral()
     maven {
         name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/johanneslosch/")
+        url = uri("https://maven.pkg.github.com/johanneslosch/java-file-handler")
         credentials {
             username = project.findProperty("gpr.user") ?: System.getenv("GHUSERNAME")
             password = project.findProperty("gpr.key") ?: System.getenv("GHTOKEN")
